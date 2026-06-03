@@ -108,8 +108,16 @@ export default function AppRouter() {
         <Route path="/onboarding" element={<OnboardingRoute><OnboardingPage /></OnboardingRoute>} />
 
         {/* App (Protected) */}
-        <Route path="/dashboard" element={<PrivateRoute><DashboardLayout><DashboardPage /></DashboardLayout></PrivateRoute>} />
-        <Route path="/tasks"     element={<PrivateRoute><DashboardLayout><TasksPage /></DashboardLayout></PrivateRoute>} />
+<Route
+  path="/dashboard"
+  element={
+    <PrivateRoute>
+      <div style={{ color: "white", padding: "40px" }}>
+        DASHBOARD ROUTE WORKING
+      </div>
+    </PrivateRoute>
+  }
+/>        <Route path="/tasks"     element={<PrivateRoute><DashboardLayout><TasksPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/habits"    element={<PrivateRoute><DashboardLayout><HabitsPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/analytics" element={<PrivateRoute><DashboardLayout><AnalyticsPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/achievements" element={<PrivateRoute><DashboardLayout><AchievementsPage /></DashboardLayout></PrivateRoute>} />
