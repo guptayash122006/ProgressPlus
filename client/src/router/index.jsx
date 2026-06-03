@@ -119,7 +119,7 @@ export default function AppRouter() {
       </DashboardLayout>
     </PrivateRoute>
   }
-/>    <Route path="/tasks"     element={<PrivateRoute><DashboardLayout><TasksPage /></DashboardLayout></PrivateRoute>} />
+/>   <Route path="/tasks"     element={<PrivateRoute><DashboardLayout><TasksPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/habits"    element={<PrivateRoute><DashboardLayout><HabitsPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/analytics" element={<PrivateRoute><DashboardLayout><AnalyticsPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/achievements" element={<PrivateRoute><DashboardLayout><AchievementsPage /></DashboardLayout></PrivateRoute>} />

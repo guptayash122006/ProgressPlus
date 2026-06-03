@@ -29,8 +29,7 @@ export const analyticsService = {
 }
 
 export const authService = {
-  sync: (data) => api.post('/api/auth/sync', data),
-  getProfile: () => api.get('/api/auth/profile'),
-  updateProfile: (data) => api.put('/api/auth/profile', data),
-  completeOnboarding: () => api.put('/api/auth/onboarding'),
+  sync: (data) => api.post('/auth/sync', data),
+  getProfile: () => api.get('/auth/profile'),
+updateProfile: (data) => api.put('/auth/profile', data),  completeOnboarding: () => api.put('/api/auth/onboarding'),
 }
