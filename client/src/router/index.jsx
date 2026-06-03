@@ -111,11 +111,11 @@ export default function AppRouter() {
 <Route
   path="/dashboard"
   element={
-    <PrivateRoute>
+    
       <div style={{ color: "white", padding: "40px" }}>
         DASHBOARD ROUTE WORKING
       </div>
-    </PrivateRoute>
+    
   }
 />        <Route path="/tasks"     element={<PrivateRoute><DashboardLayout><TasksPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/habits"    element={<PrivateRoute><DashboardLayout><HabitsPage /></DashboardLayout></PrivateRoute>} />
