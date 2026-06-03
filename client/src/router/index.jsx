@@ -32,16 +32,17 @@ function PrivateRoute({ children }) {
   console.log('[PRIVATE ROUTE] dbUser?.onboardingCompleted:', dbUser?.onboardingCompleted)
   if (loading) return <div className="flex items-center justify-center min-h-screen"><Spinner size="lg" /></div>
   if (!user) {
-    console.log('[PRIVATE ROUTE] → redirecting to /login (no user)')
-    return <Navigate to="/login" replace />
-  }
-  // If dbUser is null or not onboarded, redirect to onboarding
-  if (!dbUser || !dbUser.onboardingCompleted) {
-    console.log('[PRIVATE ROUTE] → redirecting to /onboarding (dbUser:', dbUser, ', onboardingCompleted:', dbUser?.onboardingCompleted, ')')
-    return <Navigate to="/onboarding" replace />
-  }
-  console.log('[PRIVATE ROUTE] → rendering children')
-  return children
+  console.log('[ONBOARDING ROUTE] → redirecting to /login (no user)')
+  return <Navigate to="/login" replace />
+}
+
+if (dbUser?.onboardingCompleted) {
+  console.log('[ONBOARDING ROUTE] → redirecting to /dashboard')
+  return <Navigate to="/dashboard" replace />
+}
+
+console.log('[ONBOARDING ROUTE] → rendering children')
+return children
 }
 
 // Public only (redirect if logged in)
