@@ -64,8 +64,7 @@ export default function DashboardPage() {
       </motion.div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <StatCard icon="✅" label="Completed" value={doneTasks} color="green"
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">        <StatCard icon="✅" label="Completed" value={doneTasks} color="green"
           sub={`of ${tasks.length} tasks`} />
         <StatCard icon="⏳" label="Remaining" value={tasks.length - doneTasks} color="orange"
           sub="tasks left" />

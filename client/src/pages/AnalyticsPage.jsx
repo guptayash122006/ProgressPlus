@@ -75,8 +75,16 @@ export default function AnalyticsPage() {
           <p className="text-slate-500 text-sm text-center py-8">Log some tasks to see your weekly chart!</p>
         ) : (
           <ResponsiveContainer width="100%" height={220}>
-            <BarChart data={weeklyChartData} barGap={4}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+<BarChart
+  data={weeklyChartData}
+  barGap={4}
+  margin={{
+    top: 10,
+    right: 20,
+    left: 20,
+    bottom: 5,
+  }}
+>              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
               <XAxis dataKey="name" tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#64748b', fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip content={<CustomTooltip />} />
