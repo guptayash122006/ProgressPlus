@@ -24,6 +24,7 @@ function greeting() {
 }
 
 export default function DashboardPage() {
+  console.log("DASHBOARD PAGE RENDERED")
   const { dbUser } = useAuthStore()
   const { openTaskForm } = useUIStore()
   const { data: tasks = [], isLoading: tLoading } = useTasks({})
