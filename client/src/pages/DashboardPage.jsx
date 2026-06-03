@@ -42,6 +42,7 @@ export default function DashboardPage() {
     name: format(new Date(d.date + 'T00:00:00'), 'EEE'),
     Score: d.productivityScore || 0,
   }))
+  console.log("DASHBOARD PAGE BEFORE RETURN")
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
