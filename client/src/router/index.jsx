@@ -26,23 +26,25 @@ import Spinner from '@/components/ui/Spinner'
 // Protected Route wrapper
 function PrivateRoute({ children }) {
   const { user, loading, dbUser } = useAuthStore()
-  console.log('[PRIVATE ROUTE] user:', user)
-  console.log('[PRIVATE ROUTE] dbUser:', dbUser)
-  console.log('[PRIVATE ROUTE] loading:', loading)
-  console.log('[PRIVATE ROUTE] dbUser?.onboardingCompleted:', dbUser?.onboardingCompleted)
-  if (loading) return <div className="flex items-center justify-center min-h-screen"><Spinner size="lg" /></div>
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Spinner size="lg" />
+      </div>
+    )
+  }
+
   if (!user) {
-  console.log('[ONBOARDING ROUTE] → redirecting to /login (no user)')
-  return <Navigate to="/login" replace />
-}
+    return <Navigate to="/login" replace />
+  }
 
-if (dbUser?.onboardingCompleted) {
-  console.log('[ONBOARDING ROUTE] → redirecting to /dashboard')
-  return <Navigate to="/dashboard" replace />
-}
+  // Only redirect to onboarding if onboarding not completed
+  if (!dbUser || !dbUser.onboardingCompleted) {
+    return <Navigate to="/onboarding" replace />
+  }
 
-console.log('[ONBOARDING ROUTE] → rendering children')
-return children
+  return children
 }
 
 // Public only (redirect if logged in)
@@ -111,13 +113,13 @@ export default function AppRouter() {
 <Route
   path="/dashboard"
   element={
-    
-      <div style={{ color: "white", padding: "40px" }}>
-        DASHBOARD ROUTE WORKING
-      </div>
-    
+    <PrivateRoute>
+      <DashboardLayout>
+        <DashboardPage />
+      </DashboardLayout>
+    </PrivateRoute>
   }
-/>        <Route path="/tasks"     element={<PrivateRoute><DashboardLayout><TasksPage /></DashboardLayout></PrivateRoute>} />
+/>    <Route path="/tasks"     element={<PrivateRoute><DashboardLayout><TasksPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/habits"    element={<PrivateRoute><DashboardLayout><HabitsPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/analytics" element={<PrivateRoute><DashboardLayout><AnalyticsPage /></DashboardLayout></PrivateRoute>} />
         <Route path="/achievements" element={<PrivateRoute><DashboardLayout><AchievementsPage /></DashboardLayout></PrivateRoute>} />
